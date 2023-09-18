@@ -1,35 +1,68 @@
 <template>
     <div id="add-comment">
-      <h3>Komentarze</h3>
-      <form>
-        <input type="text" required placeholder="Nazwa użytkownika" v-model.lazy="comment.user">
-        <textarea required placeholder="Dodaj komentarz" v-model.lazy="comment.content"></textarea>
+      <form @submit="onSubmit">
+        <input v-model.lazy="comment.user" type="text" placeholder="Nazwa użytkownika" required>
+        <textarea v-model.lazy.trim="comment.content" placeholder="Dodaj komentarz" required></textarea>
+        <input class="btn" type="submit" value="Skomentuj">
       </form>
-      <div id="preview">
-        <h3>Podgląd komentarza</h3>
-        <p>Nazwa użytkownika:</p>
-        <p>{{ comment.user }}</p>
-        <p>Treść:</p>
-        <p>{{ comment.content }}</p>
-      </div>
     </div>
-    </template>
+</template>
     
-    <script>
+<script>
     export default {
       data() {
         return{
           comment: {
             user: '',
             content: ''
-          }
+          },
         }
-      }
-    
+      },
+    methods: {
+      onSubmit(e){
+            e.preventDefault()
+
+            const  newComment = {
+                id: Math.floor(Math.random()*100000),
+                user: this.comment.user,
+                content: this.comment.content,
+            }
+
+            this.$emit('add-comment',newComment)
+
+            this.comment.user = '',
+            this.comment.content = ''     
+        }
     }
-    </script>
+    }
+</script>
     
-    <style scoped>
+<style scoped>
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
     #add-comment *{
         box-sizing: border-box;
         font-family: sans-serif;
@@ -56,5 +89,5 @@
     h3{
         margin-top: 10px;
     }
-    </style>
+</style>
     
