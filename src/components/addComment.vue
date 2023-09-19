@@ -1,9 +1,16 @@
 <template>
     <div id="add-comment">
       <form @submit="onSubmit">
-        <input v-model.lazy="comment.user" type="text" placeholder="Nazwa użytkownika" required>
+        <div @input="onInput">
+          <input v-model.lazy="comment.user" type="text" placeholder="Nazwa użytkownika" required>
         <textarea v-model.lazy.trim="comment.content" placeholder="Dodaj komentarz" required></textarea>
-        <input class="btn" type="submit" value="Skomentuj">
+        </div>
+        <div v-if="showAddBtn">
+          <input class="btn" type="reset" value="Anuluj" @click="onClickDecline">
+        </div>
+        <div v-if="showAddBtn">
+          <input class="btn" type="submit" value="Skomentuj" >
+        </div>
       </form>
     </div>
 </template>
@@ -16,6 +23,7 @@
             user: '',
             content: ''
           },
+          showAddBtn: false
         }
       },
     methods: {
@@ -32,14 +40,22 @@
 
             this.comment.user = '',
             this.comment.content = ''     
-        }
+        },
+        onClickDecline(){
+        this.showAddBtn = false,
+        this.comment.user = "",
+        this.comment.content= ""
+      },
+      onInput(){
+        this.showAddBtn = true
+      },
     }
     }
 </script>
     
 <style scoped>
 .btn {
-  display: inline-block;
+
   background: #000;
   color: #fff;
   border: none;
@@ -50,6 +66,7 @@
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+  float: right;
 }
 .btn:focus {
   outline: none;

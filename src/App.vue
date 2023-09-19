@@ -1,7 +1,7 @@
 <template>
   <div>
     <bialko-blog></bialko-blog>
-    <add-comment @add-comment="AddComment"></add-comment>
+      <add-comment @add-comment="AddComment"></add-comment>
     <show-comments :comments="comments"></show-comments>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   },
   data(){
     return {
-      comments: []
+      comments: [],
     }
   },
   methods:{
