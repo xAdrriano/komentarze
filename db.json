@@ -1,3 +1,14 @@
 {
-  "comments": []
+  "comments": [
+        {
+      "user": "Adrian",
+      "content": "Optymalne spożycie białka dla osoby ćwiczącej to 2g na 1kg masy ciała, białko w prożku jest bardzo dobrym suplementem, gdy w diecie brakuje nam białka, pan Mariusz poleca",
+      "id": 1
+    },
+    {
+      "user": "Krzysztof",
+      "content": "Optymalne spożycie białka dla osoby ćwiczącej to 2g na 1kg masy ciała, białko w prożku jest bardzo dobrym suplementem, gdy w diecie brakuje nam białka, pan Mariusz poleca",
+      "id": 2
+    }
+  ]
 }
