@@ -31,7 +31,6 @@
             e.preventDefault()
 
             const  newComment = {
-                id: Math.floor(Math.random()*100000),
                 user: this.comment.user,
                 content: this.comment.content,
             }

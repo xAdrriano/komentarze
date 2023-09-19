@@ -1,11 +1,10 @@
 <template>
-    <div id='add-comment'>
+     <div id='add-comment'>
         <h3>Komentarze</h3>
-<div  v-for="comment in comments" :key="comment.id">
-<show-comment :comment="comment"></show-comment>
-</div>
-    </div>
-
+            <div  v-for="(comment) in comments"  :key="comment.id">
+                <show-comment @delete-comment="$emit('delete-comment',comment.id)" :comment="comment"></show-comment>
+             </div>
+        </div>
 </template>
     
 <script>

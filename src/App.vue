@@ -2,7 +2,7 @@
   <div>
     <bialko-blog></bialko-blog>
       <add-comment @add-comment="AddComment"></add-comment>
-    <show-comments :comments="comments"></show-comments>
+    <show-comments @delete-comment="deleteComment" :comments="comments"></show-comments>
   </div>
 </template>
 
@@ -23,28 +23,37 @@ export default {
     }
   },
   methods:{
-    AddComment(comment){
-      this.comments = [comment,...this.comments]
+    async AddComment(comment){
+      const res = await fetch('api/comments',{
+        method:'POST',
+        headers:{
+          'Content-type':'application/json'
+        },
+        body: JSON.stringify(comment)
+      })
+      const data = await res.json()
+      this.comments = [data,...this.comments]
+    },
+    async deleteComment(id){
+      const res = await fetch(`api/comments/${id}`,{
+        method:"DELETE"
+      })
+      res.status === 200 ? (this.comments = this.comments.filter((comment) => comment.id !==id)) : alert('Błąd - nie udało się usunąć')
+    },
+    async fetchComments(){
+      const res = await fetch('api/comments')
+      const data = await res.json()
+      return data
+    },
+    async fetchComment(id){
+      const res = await fetch(`api/comments/${id}`)
+      const data = await res.json()
+      return data
     }
   },
-  created(){
-    this.comments = [
-    {
-      id: "1",
-      user: "Adrian",
-      content: "Bardzo fajny blog"
-    },
-    {
-      id: "2",
-      user: "Krzysiu",
-      content: "kocham twoje posty"
-    },
-    {
-      id: "3",
-      user: "Maciek",
-      content: "dobra robota"
-    }
-    ]
+
+  async created(){
+    this.comments = await this.fetchComments()
   }
 }
 </script>
