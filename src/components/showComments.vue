@@ -1,6 +1,7 @@
 <template>
      <div id='add-comment'>
         <h3>Komentarze</h3>
+          <hr>
             <div  v-for="(comment) in comments"  :key="comment.id">
                 <show-comment @delete-comment="$emit('delete-comment',comment.id)" :comment="comment"></show-comment>
              </div>
