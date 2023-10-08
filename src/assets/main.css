@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+
+.add-comment{
+    margin: 20px auto;
+    max-width: 500px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin-bottom: 60px;
+}
+
+.hover:hover{
+    background-color: #eeebeb;
+}
+h2 {
+    text-align: center;
+}
+
+h3{
+    text-align: left;
+    margin-top: 10px;
+}
+p{
+    margin: 20px auto;
+}
+.center {
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100% !important;
+}
+.border{
+    padding: 10px 20px;
+    margin: 30px 0;
+}
+label{
+    display: block;
+    margin: 20px 0 10px;
+}
+input[type="text"], textarea{
+    display: block;
+    width: 95%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.preview{
+    padding: 10px 20px;
+    border: 1px dotted #ccc;
+    margin: 30px 0;
+}
+
+.btn {
+
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+    float: right;
+}
+.btn:focus {
+    outline: none;
+}
+  
+.btn:active {
+    transform: scale(0.98);
+}
+  
+.btn-block {
+    display: block;
+    width: 100%;
+}
+h4{
+    margin-top: 5px;
+}
+body{
+    margin: 0;
+    font-family: 'Nunito SemiBold';
+}
+
+.fa {
+    float: right;
+    cursor: pointer;
+}
+
+.fa:hover{
+    color: red;
+}
+
+.showComment {
+    padding: 10px;
+    margin-top: 10px;
+}
